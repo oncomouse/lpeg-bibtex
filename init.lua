@@ -8,18 +8,22 @@ local function read_file(file)
 	return content
 end
 
--- print(inspect(parser:match(read_file("./test.bib"))))
-print(
-	inspect(
-		parser:match([[
-@comment Hey
-
-@string { foo = bar }
-
-@book{ackermann_cool_2010,
-  author = {Ackermann, Marsha E}
-}
-
-]])
-)
-)
+print(inspect(parser:match(read_file("./test.bib"))))
+-- print(
+-- 	inspect(
+-- 		parser:match([[
+-- @comment Hey
+--
+-- @comment {
+--   Hey There, you
+-- }
+--
+-- @string { foo = bar }
+--
+-- @book{ackermann_cool_2010,
+--   langid = {english}
+-- }
+--
+-- ]])
+-- )
+-- )
