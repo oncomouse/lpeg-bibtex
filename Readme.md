@@ -1,6 +1,6 @@
 # LPEG BibTeX
 
-This is a very rudimentary (for now) PEG parser (using LPEG and Lua) for BibTeX files.
+This is a very rudimentary (for now) PEG parser (using [LPEG](http://www.inf.puc-rio.br/~roberto/lpeg/) and Lua) for BibTeX files.
 
 It is based on the grammar described at [aclements/biblib](https://github.com/aclements/biblib) and reproduced below:
 
