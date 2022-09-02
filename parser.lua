@@ -16,6 +16,7 @@ local not_brace = 1 - S("{}")
 local bib_parser = P({
 	"bib_db",
 	bib_db = ws * Ct(V("node")^0) * ws,
+	-- This way of handling node and comment is based on astrocite: https://github.com/dsifford/astrocite/blob/9010483f0d265bc9d5ca701b0c5724d58907b182/packages/astrocite-bibtex/src/grammar.pegjs#L88-L116
 	node = Ct(V("comment") + V("string") + V("preamble") + V("entry")),
 	comment = Cg(Cc("comment"), "type") * ((Cg(Cc("braced_comment"), "comment_type") * P("@comment") * ws * Cg(C(V("braced_comment")) / function(x) return x:sub(2, -2) end, "contents")) +
 			(Cg(Cc("line_comment"), "comment_type") * P("@comment") * ws * Cg(C(not_nl^0), "contents") * S("\r\n")^0) +
