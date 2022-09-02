@@ -1,4 +1,6 @@
-local parser = require("parser")
+local pl_src = "./lua/?.lua;./lua/?/init.lua"
+package.path = package.path .. pl_src
+local parser = require("lpeg-bibtex")
 local inspect = require("inspect")
 
 local function read_file(file)
