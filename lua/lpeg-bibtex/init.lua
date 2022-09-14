@@ -35,7 +35,7 @@ local bib_parser = P({
 		* (
 			(
 				Cg(Cc("braced_comment"), "comment_type")
-				* P("@comment")
+				* bibtex_type("comment")
 				* ws
 				* Cg(C(V("braced_comment")) / function(x)
 					return x:sub(2, -2)
