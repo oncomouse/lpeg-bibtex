@@ -27,7 +27,7 @@ local bib_parser = P({
 	preamble_body = V("value"),
 	string = Cg(Cc("string"), "type") * P("@string") * ws * S("{(") * ws * Cg(Ct(V("string_body")), "contents") * ws * S(")}") * ws,
 	string_body = Cg(C(ident), "key") * ws * P("=") * ws * Cg(C(V("value")), "value"),
-	entry = Cg(Cc("entry"), "type") * P("@") * Cg(C(ident), "kind") * ws * (P("{") * ws * Cg(C(V("key")), "key") * ws * Cg(Ct(V("entry_body")^-1), "contents") * ws * P("}") +
+	entry = Cg(Cc("entry"), "type") * P("@") * Cg(C(ident) / function(x) return string.lower(x) end, "kind") * ws * (P("{") * ws * Cg(C(V("key")), "key") * ws * Cg(Ct(V("entry_body")^-1), "contents") * ws * P("}") +
 			P("(") * ws * C(V("key_paren")) * ws * C(V("entry_body")^-1) * ws * P(")")) * ws,
 	key = (1-S(", \t}\n"))^0,
 	key_paren = (1-S(", \t\n"))^0,
